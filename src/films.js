@@ -127,11 +127,11 @@ function hoursToMinutes(array) {
 function bestFilmOfYear(array, year) {
   const allMoviesOfYear = filterData(array, 'year', year);
 
-  const bestScore =  Math.max.apply(Math, extractDataField(allMoviesOfYear, 'score'));
+  const highestScore =  Math.max.apply(Math, extractDataField(allMoviesOfYear, 'score'));
 
-  let result = allMoviesOfYear.find(movie => movie.score === bestScore);
+  let result = filterData(allMoviesOfYear, 'score', highestScore);
 
-  return [result];
+  return result;
 }
 
 
