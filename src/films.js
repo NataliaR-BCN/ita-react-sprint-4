@@ -13,7 +13,7 @@ function extractDataField(array, property) {
 
 //Filter movies by a certain value (exercises 2 and 8):
 function filterData(array, property, value) {
-  let filterResult = array.filter(movie => movie[property] === value); 
+  const filterResult = array.filter(movie => movie[property] === value); 
 
   return filterResult;
 }
@@ -32,7 +32,7 @@ function moviesAverage(array) {
 
 // Exercise 1: Get the array of all directors
 function getAllDirectors(array) {
-  let result = extractDataField(array, 'director'); 
+  const result = extractDataField(array, 'director'); 
   
   console.log("EXERCISE 1 ->", result);
   return result;
@@ -41,7 +41,7 @@ function getAllDirectors(array) {
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
-  let result = filterData(array, 'director', director);
+  const result = filterData(array, 'director', director);
 
   return result;
 }
@@ -49,7 +49,7 @@ function getMoviesFromDirector(array, director) {
 
 // Exercise 3: Calculate the average of the films of a given director
 function moviesAverageOfDirector(array, director) {
-  let result = moviesAverage(getMoviesFromDirector(array, director));
+  const result = moviesAverage(getMoviesFromDirector(array, director));
   
   return result;
 }
@@ -57,7 +57,7 @@ function moviesAverageOfDirector(array, director) {
 
 // Exercise 4: Alphabetic order by title 
 function orderAlphabetically(array) {
-  let result = extractDataField(array, 'title').sort();
+  const result = extractDataField(array, 'title').sort();
 
   if (result.length > 20) {
     result.length = 20;
@@ -72,14 +72,14 @@ function orderByYear(array) {
 
   const films = array.slice(); //Simple clone because only change array order 
 
-  let result = films.sort(function(a, b) {
+  const result = films.sort(function(a, b) {
     if (a.year > b.year) {
         return 1;
     } else if (a.year < b.year) {
         return -1;
     } else {
-      let x = a.title.toLowerCase();
-      let y = b.title.toLowerCase();
+      const x = a.title.toLowerCase();
+      const y = b.title.toLowerCase();
       if (x > y) {
           return 1;
       } else if (x < y) {
@@ -100,7 +100,7 @@ function moviesAverageByCategory(array, category) {
     if (movie.genre.includes(category)) return movie; 
   });
   
-  let result = moviesAverage(moviesCategoryWanted);
+  const result = moviesAverage(moviesCategoryWanted);
 
   return result;
 }
@@ -111,7 +111,7 @@ function hoursToMinutes(array) {
 
   const films = JSON.parse(JSON.stringify(array)); //A copy without references to change objects
  
-  let result = films.map(film => {
+    const result = films.map(film => {
     const hours = parseInt(film.duration.split('h')[0]);
     let minutes = parseInt(film.duration.split('h')[1]);
     if (isNaN(minutes)) minutes = 0;
@@ -129,7 +129,7 @@ function bestFilmOfYear(array, year) {
 
   const highestScore =  Math.max.apply(Math, extractDataField(allMoviesOfYear, 'score'));
 
-  let result = filterData(allMoviesOfYear, 'score', highestScore);
+  const result = filterData(allMoviesOfYear, 'score', highestScore);
 
   return result;
 }
